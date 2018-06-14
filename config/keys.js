@@ -1,4 +1,4 @@
-const MONGODB_URI = 'mongodb://localhost/passportdb' || process.env.MONGO_URI;
+const MONGODB_URI = process.env.MONGO_URI;
 
 module.exports = {
   MONGODB_URI: MONGODB_URI,
