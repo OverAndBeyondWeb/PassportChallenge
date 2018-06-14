@@ -2,7 +2,14 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const socketIO = require('socket.io');
+const http = require('http');
+const server = http.Server(app);
+const io = socketIO(server);
+
+
 const PORT = process.env.PORT || 3001;
+const Factory = require('./models/Factory');
 
 //db config
 const db = require('./config/keys').MONGODB_URI;
@@ -15,7 +22,13 @@ mongoose
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });
