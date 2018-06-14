@@ -10,7 +10,7 @@ const server = http.Server(app);
 const io = socketIO(server);
 
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const Factory = require('./models/Factory');
 
 //set up promises with mongoose
@@ -28,12 +28,12 @@ mongoose
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 
-// io.on('connection', function(socket){
-//   console.log('a user connected');
-//   socket.on('disconnect', function(){
-//     console.log('user disconnected');
-//   });
-// });
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
 
 server.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
