@@ -13,6 +13,9 @@ const io = socketIO(server);
 const PORT = process.env.PORT || 3001;
 const Factory = require('./models/Factory');
 
+//set up promises with mongoose
+mongoose.Promise = global.Promise;
+
 //db config
 const db = require('./config/keys').MONGODB_URI;
 
