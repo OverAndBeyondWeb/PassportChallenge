@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   render() {
-    //const socket = socketIOClient('http://localhost:3001');
+    //const socket = socketIOClient();
     return (
       <div className="App">
         <header className="App-header">

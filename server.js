@@ -10,7 +10,7 @@ const server = http.Server(app);
 const io = socketIO(server);
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const Factory = require('./models/Factory');
 
 //set up promises with mongoose
