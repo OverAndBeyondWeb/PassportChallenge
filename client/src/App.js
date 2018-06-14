@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-//import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
-    //const socket = socketIOClient();
+    const socket = socketIOClient();
     return (
       <div className="App">
         <header className="App-header">
