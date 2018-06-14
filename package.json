@@ -1,0 +1,27 @@
+{
+  "name": "passportchallenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OverAndBeyondWeb/PassportChallenge.git"
+  },
+  "author": "Juan Fox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OverAndBeyondWeb/PassportChallenge/issues"
+  },
+  "homepage": "https://github.com/OverAndBeyondWeb/PassportChallenge#readme",
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5"
+  }
+}
