@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/OverAndBeyondWeb/PassportChallenge#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "concurrently": "^3.5.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "mongoose": "^5.1.5",
-    "socket.io": "^2.1.1"
+    "mongoose": "^5.1.5"
   }
 }

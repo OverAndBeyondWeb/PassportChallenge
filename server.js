@@ -4,11 +4,11 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const socketIO = require('socket.io');
-const http = require('http');
-const server = http.Server(app);
-const io = socketIO(server);
 
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const PORT = process.env.PORT || 3001;
 const Factory = require('./models/Factory');
@@ -27,14 +27,6 @@ mongoose
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
-
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });
