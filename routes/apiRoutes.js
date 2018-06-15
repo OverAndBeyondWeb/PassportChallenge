@@ -2,16 +2,13 @@
 const router = require('express').Router();
 const Factory = require('../models/Factory');
 const randomNumber = require('../utils/randomNumber');
+const sse = require('sse-express');
+const app = require('express')();
 
-router.post('/api/factory', (req, res) => {
-  let name = req.body.name;
-  let children = createChildren(req.body.numChildren, req.body.lowerbound, req.body.upperbound);
-  Factory.create({name: name, children: children})
-    .then(factory => res.status(200).json(factory))
-    .catch(err => console.log(err));
-});
 
 router.get('/api/factories', (req, res) => {
+  
+  console.log();
   Factory.find({})
     .then(factory => res.status(200).json(factory))
     .catch(err => console.log(err));

@@ -16,6 +16,30 @@ class TreeView extends Component {
     upperbound: 100
   }
 
+  componentDidMount() {
+    if(!!window.EventSource) {
+
+      const source = new EventSource('/eventstream');
+
+      source.addEventListener('open', function() {
+        console.log('open');
+      }, false);
+
+      source.addEventListener('message', (e) => {
+        console.log('pwert')
+        console.log(e.data);
+        // => Hello world!
+    });
+    } else {
+      console.log('your browser doesn\'t support SSE');
+    }
+  }
+
+  test = () => {
+    axios.get('/u')
+      .then(res => console.log('res', res));
+  }
+
   modalToggle = () => {
     this.setState({
       modalVisilble: !this.state.modalVisilble
@@ -76,6 +100,7 @@ class TreeView extends Component {
           name="Factory"
           childData={[100, 10, 78]}
         />
+        <button onClick={this.test}>test</button>
       </div>
     )
   }
