@@ -8,7 +8,7 @@ const Root = (props) => {
         <h1>Root</h1>
       </div>
       <div className="controls">
-        <button>Add Factory</button>
+        <button onClick={props.revealForm}>Add Factory</button>
         <button>Delete All</button>
       </div>
     </div>
