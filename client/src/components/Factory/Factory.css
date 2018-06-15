@@ -1,0 +1,21 @@
+.Factory {
+  height: 32px;
+  padding: 5px;
+  margin-top: 30px;
+  margin-left: 12%;
+}
+
+.factory-name {
+  display: inline-block;
+  height: 32px;
+  width: 100px;
+  background: green;
+  font-size: 2em;
+  line-height: 32px;
+  border-radius: 3Px;
+}
+
+.Factory .controls {
+  display: inline-block;
+  height: 32px;
+}

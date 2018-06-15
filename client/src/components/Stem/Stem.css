@@ -1,0 +1,6 @@
+.Stem {
+  display: inline-block;
+  border: 4px solid darkgray;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
