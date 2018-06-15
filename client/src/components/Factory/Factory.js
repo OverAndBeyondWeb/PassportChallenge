@@ -8,7 +8,8 @@ class Factory extends Component {
   
   state = {
     rename: false,
-    name: 'Factory'
+    name: 'Factory',
+    renameBtnText: 'Rename'
   }
 
   toggleRename = () => {
@@ -18,8 +19,24 @@ class Factory extends Component {
   }
 
   revealTextBox = () => {
-    console.log('text');
     this.toggleRename();
+    this.toggleBtnText();
+    if(this.state.rename) {
+      this.acceptNewName(this.props.id, this.state.name);
+    }
+  }
+
+  toggleBtnText = () => {
+    let btnText = this.state.rename ? 'Rename' : 'Accept';
+    this.setState({
+      renameBtnText: btnText
+    });
+  }
+
+  acceptNewName = (id, newName) => {
+    axios.put('/api/factory/' + id, {newName: newName})
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
   deleteSelf = (id) => {
@@ -53,7 +70,7 @@ class Factory extends Component {
              : <h1>{this.props.name}</h1>}
         </div>
         <div className="controls">
-          <button onClick={this.revealTextBox}>Rename</button>
+          <button onClick={this.revealTextBox}>{this.state.renameBtnText}</button>
           <button onClick={() => this.deleteSelf(this.props.id)}>Delete</button>
         </div>
         {children}
