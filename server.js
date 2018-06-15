@@ -53,13 +53,19 @@ app.delete('/api/factory/:id', (req, res) => {
   Factory.deleteOne({_id: req.params.id})
     .then(res => app.emit('message', {title: 'New message!'}))
     .catch(err  => console.log(err))
-})
+});
 
 app.delete('/api/factories', (req, res) => {
   Factory.remove({})
     .then(res => app.emit('message', {title: 'New message!'}))
     .catch(err  => console.log(err))
-})
+});
+
+app.put('/api/factory/:id', (req, res) => {
+  Factory.findByIdAndUpdate(req.params.id, { name: req.body.newName })
+  .then(res => app.emit('message', {title: 'New message!'}))
+  .catch(err => console.log(err))
+});
 
 app.use(require('./routes/apiRoutes'));
 
