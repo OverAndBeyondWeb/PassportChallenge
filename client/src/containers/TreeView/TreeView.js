@@ -13,9 +13,14 @@ class TreeView extends Component {
     return (
       <div className="TreeView">
         <Root/>
-        <Factory name="Factory"/>
-        <Factory name="Factory"/>
-        <Factory name="Factory"/>
+        <Factory 
+          name="Factory"
+          childData={[100, 10, 78]}
+        />
+        <Factory 
+          name="Factory"
+          childData={[100, 10, 78]}
+        />
       </div>
     )
   }
