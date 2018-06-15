@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Factory.css';
 import Stem from '../Stem/Stem';
 import Child from '../Child/Child';
+import axios from 'axios';
 
 class Factory extends Component {
   
@@ -21,8 +22,10 @@ class Factory extends Component {
     this.toggleRename();
   }
 
-  deleteSelf = () => {
-    console.log('deleted');
+  deleteSelf = (id) => {
+    axios.delete('/api/factory/' + id)
+      .then()
+      .catch();
   }
 
   handleInput = (e) => {
@@ -33,9 +36,8 @@ class Factory extends Component {
   
 
   render() {
-    let children = this.props.childData.map(data => {
-    let randomNumber = Math.floor((Math.random() * data) + 1);
-      return <Child number={randomNumber} key={randomNumber}/>
+    let children = this.props.children.map((child, index) => {
+      return <Child number={child} key={child + index}/>
     });
     return (
       <div className="Factory">
@@ -48,11 +50,11 @@ class Factory extends Component {
               onChange={this.handleInput}
               value={this.state.name}
             /> 
-             : <h1>{this.state.name}</h1>}
+             : <h1>{this.props.name}</h1>}
         </div>
         <div className="controls">
           <button onClick={this.revealTextBox}>Rename</button>
-          <button onClick={this.deleteSelf}>Delete</button>
+          <button onClick={() => this.deleteSelf(this.props.id)}>Delete</button>
         </div>
         {children}
       </div>

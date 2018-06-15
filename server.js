@@ -39,21 +39,35 @@ app.get('/eventstream', (req, res, next) => {
       res.write(`data: ${JSON.stringify(data)}\n\n`);
   });
 });
+
 app.post('/api/factory', (req, res) => {
   let name = req.body.name;
   let children = createChildren(req.body.numChildren, req.body.lowerbound, req.body.upperbound);
   console.log(children, name)
   Factory.create({name: name, children: children})
     .then(res => app.emit('message', {title: 'New message!'}))
-    .catch(err  => console.log(err));
-      
-      
+    .catch(err  => console.log(err));    
 });
+
+app.delete('/api/factory/:id', (req, res) => {
+  Factory.deleteOne({_id: req.params.id})
+    .then(res => app.emit('message', {title: 'New message!'}))
+    .catch(err  => console.log(err))
+})
+
+app.delete('/api/factories', (req, res) => {
+  Factory.remove({})
+    .then(res => app.emit('message', {title: 'New message!'}))
+    .catch(err  => console.log(err))
+})
+
 app.use(require('./routes/apiRoutes'));
 
 app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });
+
+
 
 function createChildren(numChildren, lowerbound, upperbound) {
   let children = [];

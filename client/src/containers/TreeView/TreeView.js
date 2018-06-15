@@ -13,7 +13,8 @@ class TreeView extends Component {
     factoryName: '',
     numChildren: 0,
     lowerbound: 1,
-    upperbound: 100
+    upperbound: 100,
+    factories:[]
   }
 
   componentDidMount() {
@@ -26,18 +27,29 @@ class TreeView extends Component {
       }, false);
 
       source.addEventListener('message', (e) => {
-        console.log('pwert')
         console.log(e.data);
-        // => Hello world!
-    });
+        
+        axios.get('/api/factories')
+          .then(res => {
+            this.setState({
+              factories: res.data
+            })
+          })
+          .catch();
+
+      }, false);
+
     } else {
       console.log('your browser doesn\'t support SSE');
     }
-  }
 
-  test = () => {
-    axios.get('/u')
-      .then(res => console.log('res', res));
+    axios.get('/api/factories')
+      .then(res => {
+        this.setState({
+          factories: res.data
+        })
+      })
+      .catch();
   }
 
   modalToggle = () => {
@@ -63,7 +75,9 @@ class TreeView extends Component {
   }
 
   deleteAllFactories = () => {
-    console.log('deleted all');
+    axios.delete('/api/factories')
+      .then()
+      .catch()
   }
 
   handleInput = (e) => { 
@@ -92,15 +106,13 @@ class TreeView extends Component {
           revealForm={this.revealForm}
           deleteAllFactories={this.deleteAllFactories}
         />
-        <Factory 
-          name="Factory"
-          childData={[100, 500, 78]}
-        />
-        <Factory 
-          name="Factory"
-          childData={[100, 10, 78]}
-        />
-        <button onClick={this.test}>test</button>
+        {this.state.factories.map(factory => {
+          return (<Factory 
+                    name={factory.name}
+                    children={factory.children}
+                    id={factory._id}
+                  />)
+        })}
       </div>
     )
   }
