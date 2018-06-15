@@ -12,13 +12,12 @@ router.post('/api/factory', (req, res) => {
 });
 
 router.get('/api/factories', (req, res) => {
-  Factory.findAll({})
+  Factory.find({})
     .then(factory => res.status(200).json(factory))
     .catch(err => console.log(err));
 });
 
 function createChildren(numChildren, lowerbound, upperbound) {
-  console.log(numChildren, lowerbound, upperbound);
   let children = [];
   for(let i=1; i<numChildren+1; i++) {
     children.push(randomNumber(lowerbound, upperbound))
