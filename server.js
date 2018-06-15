@@ -1,4 +1,4 @@
-require('dotenv').config();
+console.log(require('dotenv').config());
 
 const path = require('path');
 const express = require('express');
@@ -17,7 +17,7 @@ const Factory = require('./models/Factory');
 mongoose.Promise = global.Promise;
 
 //db config
-const db = require('./config/keys').MONGODB_URI;
+const db = require('./config/keys').MONGODB_URI || process.env.MONGOLAB_URI;
 
 //connect to MongoDB
 mongoose
