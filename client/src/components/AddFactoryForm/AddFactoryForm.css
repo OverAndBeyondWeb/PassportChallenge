@@ -1,0 +1,9 @@
+.AddFactoryForm {
+ 
+}
+input {
+  margin: 15px 25px 10px 0;
+}
+input[type="number"] {
+  display: block;
+}

@@ -9,7 +9,7 @@ const Root = (props) => {
       </div>
       <div className="controls">
         <button onClick={props.revealForm}>Add Factory</button>
-        <button>Delete All</button>
+        <button onClick={props.deleteAllFactories}>Delete All</button>
       </div>
     </div>
   )
