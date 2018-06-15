@@ -27,6 +27,7 @@ mongoose
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+app.use(require('./routes/apiRoutes'));
 app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });

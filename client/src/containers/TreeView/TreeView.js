@@ -28,8 +28,13 @@ class TreeView extends Component {
 
   addFactory = (e) => {
     e.preventDefault();
-    console.log('factory added');
-    console.log(this.state)
+    let data = {
+      name: this.state.factoryName,
+      numChildren: +this.state.numChildren,
+      lowerbound: +this.state.lowerbound,
+      upperbound: +this.state.upperbound
+    };
+    axios.post('/api/factory', data);
     this.modalToggle();
   }
 
@@ -37,13 +42,10 @@ class TreeView extends Component {
     console.log('deleted all');
   }
 
-  handleInput = (e) => {
-    
+  handleInput = (e) => { 
     this.setState({
       [e.target.name]: e.target.value
     })
-    
-    console.log(e.target.value);
   }
 
   render() {

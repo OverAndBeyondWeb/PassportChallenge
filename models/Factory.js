@@ -5,9 +5,7 @@ const Schema = mongoose.Schema;
 
 const FactorySchema = new Schema({
   name: {
-    type: String,
-    required: true,
-    unique: true
+    type: String
   },
   children: [{
     type: Number,
