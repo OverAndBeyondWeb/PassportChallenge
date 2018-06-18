@@ -44,13 +44,12 @@ input[type="number"] {
   border: 1px solid rgba(244, 66, 66, 1); 
 }
 
-.bounds-error {
+.error {
   display: none;
   color: red;
   font-size: 14px;
   text-shadow: 0 0 1px rgb(163, 93, 93);
   position: relative;
-  top: -10px;
 }
 
 .show-error {

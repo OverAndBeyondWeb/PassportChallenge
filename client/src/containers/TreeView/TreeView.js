@@ -15,7 +15,10 @@ class TreeView extends Component {
     lowerbound: 1,
     upperbound: 100,
     factories:[],
-    validBounds: true
+    errors: {
+      validBounds: true,
+      hasName: true
+    }
   }
 
   componentDidMount() {
@@ -65,6 +68,16 @@ class TreeView extends Component {
 
   addFactory = (e) => {
     e.preventDefault();
+    if(!this.state.factoryName) {
+      this.setState({
+        errors: {
+          validBounds: this.state.errors.validBounds,
+          hasName: false
+        }
+      });
+      return;
+    }
+
     let data = {
       name: this.state.factoryName,
       numChildren: +this.state.numChildren,
@@ -85,20 +98,26 @@ class TreeView extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    this.checkBounds();
+    this.setState({
+      errors: {
+        validBounds: this.checkBounds(),
+        hasName: this.checkNameField(e.target) || this.state.errors.hasName
+      }
+    })
   }
 
-  checkBounds() {
+  checkBounds = () => {
     if(+this.state.lowerbound <= 0) {
       this.setState({
         lowerbound: 0
       });
     }
-    let valid = +this.state.upperbound > +this.state.lowerbound;
-    if(this.state.validBounds !== valid) {
-      this.setState({
-        validBounds: valid
-      });
+    return +this.state.upperbound > +this.state.lowerbound; 
+  }
+
+  checkNameField = (target) => {
+    if(target.name === 'factoryName') {
+      return !!target.value; 
     }
   }
 
@@ -116,7 +135,7 @@ class TreeView extends Component {
             lowerbound={this.state.lowerbound}
             upperbound={this.state.upperbound}
             handleInput={this.handleInput}
-            validBounds={this.state.validBounds}
+            errors={this.state.errors}
           />
         </Modal>
         <Root

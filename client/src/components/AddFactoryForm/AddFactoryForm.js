@@ -6,15 +6,17 @@ const AddFactoryForm = (props) => {
     <form className="AddFactoryForm">
       <h1>Create a New Factory</h1>
       <fieldset>
-        <p className="input-block">
+        <div className="indivut-block">
           <label htmlFor="factoryName">Name:</label>
           <input
             type="text"
             name="factoryName"
+            placeholder="required"
             value={props.factoryName}
             onChange={props.handleInput}
           />
-        </p>
+          <p className={(props.errors.hasName ? null : "show-error") + " error"}>Your factory must have a name</p>
+        </div>
         <p className="input-block">
           <label htmlFor="numChildren">Children:</label>
           <select name="numChildren"
@@ -44,7 +46,7 @@ const AddFactoryForm = (props) => {
         <p className="input-block">
           <label htmlFor="lowerbound">Lower Bound</label>
           <input name="lowerbound"
-            className={props.validBounds ? "valid-bounds" : "invalid-bounds"}
+            className={props.errors.validBounds ? "valid-bounds" : "invalid-bounds"}
             type="number"
             value={props.lowerbound}
             onChange={props.handleInput}
@@ -53,15 +55,18 @@ const AddFactoryForm = (props) => {
         <p className="input-block">
           <label htmlFor="upperbound">Upper Bound</label>
           <input name="upperbound"
-            className={props.validBounds ? "valid-bounds" : "invalid-bounds"}
+            className={props.errors.validBounds ? "valid-bounds" : "invalid-bounds"}
             type="number"
             value={props.upperbound}
             onChange={props.handleInput}
           />
         </p>
       </fieldset>
-      <p className={(props.validBounds ? null : "show-error") + " bounds-error"}>Lower must be less than upper!</p>
-      <button onClick={props.addFactory}>Add Factory</button>
+      <p 
+        className={(props.errors.validBounds ? null : "show-error") + " error"}
+        style={{top: '-10px'}}
+        >Lower must be less than upper!</p>
+      <button disabled={!props.errors.validBounds} onClick={props.addFactory}>Add Factory</button>
     </form>
   )
 };
