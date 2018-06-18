@@ -59,9 +59,8 @@ const AddFactoryForm = (props) => {
             onChange={props.handleInput}
           />
         </p>
-        
       </fieldset>
-      
+      <p className={(props.validBounds ? null : "show-error") + " bounds-error"}>Lower must be less than upper!</p>
       <button onClick={props.addFactory}>Add Factory</button>
     </form>
   )

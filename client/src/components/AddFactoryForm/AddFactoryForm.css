@@ -1,5 +1,10 @@
 .AddFactoryForm {
   text-align: center;
+  position: relative;
+}
+
+.AddFactoryForm h1 {
+  font-size: 36px;
 }
 input, select {
   margin: 15px 25px 10px 0;
@@ -37,4 +42,17 @@ input[type="number"] {
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(244, 66, 66, 1); 
+}
+
+.bounds-error {
+  display: none;
+  color: red;
+  font-size: 14px;
+  text-shadow: 0 0 1px rgb(163, 93, 93);
+  position: relative;
+  top: -10px;
+}
+
+.show-error {
+  display: block;
 }
