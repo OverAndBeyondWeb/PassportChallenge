@@ -89,6 +89,11 @@ class TreeView extends Component {
   }
 
   checkBounds() {
+    if(+this.state.lowerbound <= 0) {
+      this.setState({
+        lowerbound: 0
+      });
+    }
     let valid = +this.state.upperbound > +this.state.lowerbound;
     if(this.state.validBounds !== valid) {
       this.setState({

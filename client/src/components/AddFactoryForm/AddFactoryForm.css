@@ -1,15 +1,24 @@
 .AddFactoryForm {
- 
+  text-align: center;
 }
-input {
+input, select {
   margin: 15px 25px 10px 0;
 }
+
+label {
+  margin-right: 5px;
+}
+
+fieldset {
+  display: flex;
+  margin: 25px 0;
+}
+
+.input-block {
+  width: 50%;
+}
 input[type="number"] {
-  display: block;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
   outline: none;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
