@@ -37,12 +37,14 @@ const AddFactoryForm = (props) => {
       </select>
       <label htmlFor="lowerbound">Lower Bound</label>
       <input name="lowerbound"
+        className={props.validBounds ? "valid-bounds" : "invalid-bounds"}
         type="number"
         value={props.lowerbound}
         onChange={props.handleInput}
       />
       <label htmlFor="upperbound">Upper Bound</label>
       <input name="upperbound"
+        className={props.validBounds ? "valid-bounds" : "invalid-bounds"}
         type="number"
         value={props.upperbound}
         onChange={props.handleInput}

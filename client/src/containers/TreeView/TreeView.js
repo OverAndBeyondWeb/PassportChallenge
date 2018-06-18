@@ -14,7 +14,8 @@ class TreeView extends Component {
     numChildren: 0,
     lowerbound: 1,
     upperbound: 100,
-    factories:[]
+    factories:[],
+    validBounds: true
   }
 
   componentDidMount() {
@@ -84,6 +85,16 @@ class TreeView extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+    this.checkBounds();
+  }
+
+  checkBounds() {
+    let valid = +this.state.upperbound > +this.state.lowerbound;
+    if(this.state.validBounds !== valid) {
+      this.setState({
+        validBounds: valid
+      });
+    }
   }
 
   render() {
@@ -100,6 +111,7 @@ class TreeView extends Component {
             lowerbound={this.state.lowerbound}
             upperbound={this.state.upperbound}
             handleInput={this.handleInput}
+            validBounds={this.state.validBounds}
           />
         </Modal>
         <Root

@@ -45,7 +45,7 @@ app.get('/eventstream', (req, res, next) => {
   });
 });
 
-// Use router insance
+// Use router instance
 app.use(require('./routes/apiRoutes')(app));
 
 // Listen for connections
