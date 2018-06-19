@@ -97,22 +97,25 @@ class TreeView extends Component {
   handleInput = (e) => { 
     this.setState({
       [e.target.name]: e.target.value
-    })
-    this.setState({
-      errors: {
-        validBounds: this.checkBounds(),
-        hasName: this.checkNameField(e.target) || this.state.errors.hasName
-      }
-    })
+    });
+    let target = e.target;
+    this.setState((prevState, props) => {
+      return ({
+        errors: {
+          validBounds: this.checkBounds(prevState),
+          hasName: this.checkNameField(target) || prevState.errors.hasName
+        }
+      })
+    });
   }
 
-  checkBounds = () => {
-    if(+this.state.lowerbound <= 0) {
+  checkBounds = (prevState) => {
+    if(+prevState.lowerbound <= 0) {
       this.setState({
         lowerbound: 0
       });
     }
-    return +this.state.upperbound > +this.state.lowerbound; 
+    return +prevState.upperbound > +prevState.lowerbound; 
   }
 
   checkNameField = (target) => {
