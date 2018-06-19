@@ -98,19 +98,25 @@ class TreeView extends Component {
     // Collect data from all form fields
     let data = {
       name: this.state.factoryName,
-      numChildren: +this.state.numChildren,
-      lowerbound: +this.state.lowerbound,
-      upperbound: +this.state.upperbound
+      numChildren: this.state.numChildren,
+      lowerbound: this.state.lowerbound,
+      upperbound: this.state.upperbound
     };
-
+    
     // Make a post request with form field data
     axios.post('/api/factory', data)
 
       // Log response if successful
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+      })
 
       // Log error if unsuccessful
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response)
+
+        // Use errors from backend
+      });
 
     // Close modal  
     this.modalToggle();

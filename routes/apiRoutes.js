@@ -5,11 +5,34 @@ const router = require('express').Router();
 const Factory = require('../models/Factory');
 const randomNumber = require('../utils/randomNumber');
 
+const { body, validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
+
 
 module.exports = app => {
 
   // Create a factory
-  router.post('/api/factory', (req, res) => {
+  router.post('/api/factory', [
+    body('name')
+      .not().isEmpty()
+      .trim()
+      .escape(),
+    body('numChildren')
+      .isNumeric()
+      .toInt(),
+    body('lowerbound')
+      .isNumeric()
+      .toInt(),
+    body('upperbound')
+      .isNumeric()
+      .toInt()
+  ], (req, res) => {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array()})
+    }
 
     // From name form field
     let name = req.body.name;
