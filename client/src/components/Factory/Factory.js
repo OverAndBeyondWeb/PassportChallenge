@@ -71,8 +71,12 @@ class Factory extends Component {
              : <h1>{this.props.name}</h1>}
         </div>
         <div className="controls">
-          <button onClick={this.revealTextBox}>{this.state.renameBtnText}</button>
-          <button onClick={() => this.deleteSelf(this.props.id)}>Delete</button>
+          <div 
+            className="btn"
+            onClick={this.revealTextBox}>{this.state.renameBtnText}</div>
+          <div 
+            className="btn"
+            onClick={() => this.deleteSelf(this.props.id)}>Delete</div>
         </div>
         {children}
       </div>
