@@ -5,7 +5,7 @@
   position: relative;
 }
 
-.factory-name {
+/* .factory-name {
   display: inline-block;
   height: 32px;
   width: 100px;
@@ -13,6 +13,31 @@
   font-size: 2em;
   line-height: 32px;
   border-radius: 3Px;
+} */
+
+.factory-name {
+  display: inline-block;
+	min-width:100px;
+  padding: 11px 20px;
+  margin-right: 10px;
+	font-size: 26px;
+	line-height: 26px;
+  text-decoration: none;
+  text-transform: capitalize;
+	color: #FFF;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.75);
+	background: #5e0d0c;
+	outline: none;
+	border-radius: 15px;
+	border: 1px solid #4c0300;
+	box-shadow:
+		inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+		inset 0 0 6px #a23227, /* inner glow */
+		inset 0 80px 80px -40px #ac3223, /* gradient */
+		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
+		
+	position: relative;
+	overflow: visible; /* IE9 & 10 */
 }
 
 .Factory .controls {
