@@ -8,8 +8,12 @@ const Root = (props) => {
         <h1>Root</h1>
       </div>
       <div className="controls">
-        <button onClick={props.revealForm}>Add Factory</button>
-        <button onClick={props.deleteAllFactories}>Delete All</button>
+        <div 
+          className="btn add"
+          onClick={props.revealForm}>Add Factory</div>
+        <div 
+          className="btn delete"
+          onClick={props.deleteAllFactories}>Delete All</div>
       </div>
     </div>
   )
