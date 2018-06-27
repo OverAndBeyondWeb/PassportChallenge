@@ -35,7 +35,6 @@ class Factory extends Component {
   }
 
   acceptNewName = (id, newName) => {
-    console.log('hit')
     axios.put('/api/factory/' + id, {newName: newName})
       .then(res => console.log(res))
       .catch(err => console.log(err))

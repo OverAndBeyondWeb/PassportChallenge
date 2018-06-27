@@ -211,6 +211,7 @@ class TreeView extends Component {
                     name={factory.name}
                     children={factory.children}
                     id={factory._id}
+                    key={factory._id}
                   />)
         })}
       </div>
