@@ -120,6 +120,13 @@ class TreeView extends Component {
 
     // Close modal  
     this.modalToggle();
+
+    this.setState({
+      factoryName: '',
+      numChildren: 1,
+      lowerbound: 1,
+      upperbound: 100,
+    });
   }
 
   // Clear database
