@@ -11,7 +11,7 @@ class TreeView extends Component {
   state = {
     modalVisilble: false,
     factoryName: '',
-    numChildren: 0,
+    numChildren: 1,
     lowerbound: 1,
     upperbound: 100,
     factories:[],

@@ -45,10 +45,10 @@ module.exports = app => {
     // Insert name and random numbers into the database
     Factory.create({name: name, children: children})
 
-      // Emit an event after the data has been entered
+    //   // Emit an event after the data has been entered
       .then(res => app.emit('message', {title: 'New message!'}))
 
-      // Show errors on the console
+    //   // Show errors on the console
       .catch(err  => console.log(err));    
   });
   
