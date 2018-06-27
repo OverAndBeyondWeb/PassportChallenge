@@ -3,6 +3,7 @@ import './Factory.css';
 import Stem from '../Stem/Stem';
 import Child from '../Child/Child';
 import axios from 'axios';
+const keyIndex = require('react-key-index');
 
 class Factory extends Component {
   
@@ -54,8 +55,8 @@ class Factory extends Component {
   
 
   render() {
-    let children = this.props.children.map((child, index) => {
-      return <Child number={child} key={child + index}/>
+    let children = keyIndex(this.props.children, 1).map((child) => {
+      return <Child number={child.value} key={child.id}/>
     });
     return (
       <div className="Factory">
